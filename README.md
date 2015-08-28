@@ -1,36 +1,48 @@
-# counties
+# County counter
 
-FIXME: description
+Counts counties in the USA. Also prints counties that have unique names. This is done by parsing the "List of United States counties and county equivalents" article on Wikipedia.
 
 ## Installation
 
-Download from http://example.com/FIXME.
+Clone the repo, and run a build with Leiningen.
+
+```bash
+lein uberjar
+```
 
 ## Usage
 
-FIXME: explanation
+Run the standalone JAR file with optional arguments
 
-    $ java -jar counties-0.1.0-standalone.jar [args]
+```bash
+java -jar counties-0.1.0-standalone.jar [args]
+```
 
-## Options
+### Options
 
-FIXME: listing of options this app accepts.
+By default, the program prints county names and their frequency counts. However, you may specify an option to perform a different function
+
+- -f  
+  remove valid names, and print only invalid names (for testing)
+- -u  
+  print unique county names 
 
 ## Examples
 
-...
+Print all county names and their frequency
 
-### Bugs
+```bash
+java -jar counties-0.1.0-standalone.jar
+```
 
-...
+Print unique county names
 
-### Any Other Sections
-### That You Think
-### Might be Useful
+```bash
+java -jar counties-0.1.0-standalone.jar -u
+```
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 Corey Beres
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
