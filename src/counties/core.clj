@@ -1,5 +1,7 @@
 (ns counties.core
   (:use jsoup.soup)
+  (:use [incanter.core :only [save view]])
+  (:use [incanter.charts :only [bar-chart]])
   (:gen-class))
 
 (defmacro any [& v] `(boolean (or ~@v)))
@@ -34,9 +36,15 @@
                   (.endsWith % ", City of")
                   (.endsWith % " Census Area")))))
 
-(defn csv [m]
+(defn to-csv [m]
   "concats map keys and values with a comma"
   (map #(str (key %) "," (val %)) m))
+
+(defn to-histogram [d n filename]
+  (let [data (take n (reverse (sort-by val d)))
+        plot (bar-chart (keys data) (vals data) :title "Most popular county names" :x-label "counties" :y-label "frequency" :vertical false)]
+    (save plot filename :width 561 :height 340)
+    (view plot)))
 
 (defn print-all [coll]
   "prints every element of the collection on a new line"
@@ -50,5 +58,7 @@
                (("-f")) (filter-names)
                ; print counties with unique names
                (("-u")) (sort (keys (filter #(= 1 (val %)) (frequencies (read-all-names)))))
+               ; generate histogram of frequencies by county
+               (("-g")) (to-histogram (frequencies (read-all-names)) 16 "counties.png")
                ; print all counties and frequencies as CSV text
-               (csv (sort-by val (frequencies (read-all-names)))))))
+               (to-csv (sort-by val (frequencies (read-all-names)))))))
