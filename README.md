@@ -23,8 +23,8 @@ java -jar counties-0.1.0-standalone.jar [args]
 By default, the program shows a chart, which it saves to `counties.png` in the current folder.. However, you may specify an option to perform a different function
 
 - -u  
-  print unique county names 
-- -c
+  print unique county names
+- -c  
   print county names and frequencies as comma-separated values
 - -f  
   remove valid names, and print only invalid names (for testing)
