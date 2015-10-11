@@ -20,7 +20,7 @@ java -jar counties-0.1.0-standalone.jar [args]
 
 ### Options
 
-By default, the program shows a chart, which it saves to `counties.png` in the current folder.. However, you may specify an option to perform a different function
+By default, the program shows a chart, which it saves to `counties.png` in the current folder. However, you may specify an option to perform a different function.
 
 - -u  
   print unique county names
