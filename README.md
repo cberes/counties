@@ -20,22 +20,24 @@ java -jar counties-0.1.0-standalone.jar [args]
 
 ### Options
 
-By default, the program prints county names and their frequency counts. However, you may specify an option to perform a different function
+By default, the program shows a chart, which it saves to `counties.png` in the current folder.. However, you may specify an option to perform a different function
 
-- -f  
-  remove valid names, and print only invalid names (for testing)
 - -u  
   print unique county names 
+- -c
+  print county names and frequencies as comma-separated values
+- -f  
+  remove valid names, and print only invalid names (for testing)
 
 ## Examples
 
-Print all county names and their frequency
+Show and save a chart of most frequent county names
 
 ```bash
 java -jar counties-0.1.0-standalone.jar
 ```
 
-Print unique county names
+Print all unique county names
 
 ```bash
 java -jar counties-0.1.0-standalone.jar -u
