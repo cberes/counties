@@ -24,7 +24,8 @@
     (map #(.replaceFirst % " County$" ""))
     (map #(.replaceFirst % " Parish$" ""))
     (map #(.replaceFirst % " Borough$" ""))
-    (map #(.replaceFirst % " Census Area$" ""))))
+    (map #(.replaceFirst % " Census Area$" ""))
+    (frequencies)))
 
 (defn filter-names []
   "gets county names, and removes valid names, leaving invalid names"
@@ -57,8 +58,8 @@
                ; filter out valid names to find oddities (for testing)
                (("-f")) (filter-names)
                ; print counties with unique names
-               (("-u")) (sort (keys (filter #(= 1 (val %)) (frequencies (read-all-names)))))
+               (("-u")) (sort (keys (filter #(= 1 (val %)) (read-all-names))))
                ; generate histogram of frequencies by county
-               (("-g")) (to-histogram (frequencies (read-all-names)) 16 "counties.png")
+               (("-c")) (to-csv (read-all-names))
                ; print all counties and frequencies as CSV text
-               (to-csv (sort-by val (frequencies (read-all-names)))))))
+               (to-histogram (read-all-names) 16 "counties.png"))))
